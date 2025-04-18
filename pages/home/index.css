@@ -1,0 +1,270 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+.nav-bar{
+    height: 12vh;
+    display: flex;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.482) inset ;
+}
+.left-side-bar{
+flex: 0.1;
+display: flex;
+justify-content: center;
+align-items: center;
+column-gap: 7px;
+}
+.right-sde-bar{
+    flex: 0.9;
+    display: flex;
+}
+.menu{
+    margin-left: 10px;
+    display: none;
+}
+.search-bar{
+    flex: 0.55;
+    display: flex;
+}
+.search-bar img{
+    position: absolute;
+    top: 28px;
+    margin-left: 10px;
+}
+.search{
+    flex: 1;
+    outline: none;
+    border: none;
+    align-self: center;
+    height: 40px;padding-left: 30px;
+    border-radius: 35px; 
+    background-color: rgba(0, 0, 255, 0.282);
+}
+::placeholder{
+    position: relative;
+left: 30px;
+}
+.links{
+    flex: 0.45;
+    display: flex;
+    flex-direction: row;
+}
+.searclink-img{
+    display: none;
+}
+.letter-link{
+flex: 0.7;
+display: flex;
+}
+ul{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+flex: 1;
+column-gap: 20px;
+}
+li{
+    list-style: none;
+}
+.icon-link{
+    flex: 0.5;
+    display:    flex;
+      justify-content: center;
+    align-items: center;
+    column-gap: 45px;
+}
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.649);
+    z-index: 1;
+}
+.modal-content{
+   background-color: rgb(254, 254, 254);
+  margin: 0.7% auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 70%;
+   height: 90%;
+   max-width: 700px;
+   border-radius: 10px;
+   box-shadow: 0 5px 15px rgba(0,0,0,0.3) inset;
+} 
+
+/* menu */
+.menus{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    width: 100%;
+    /* height: 100%; */
+}
+/* .menucontent{
+    background-color: red;
+    height: 40vh;
+    width: 40%;
+} */
+
+/* Style the menus-list to display items vertically */
+.menus-list ul {
+    list-style-type: none;
+    padding: 0; 
+    position: absolute;
+    top: 15vh;
+    left: 1vh;
+    width: 100%;
+    column-gap: 12vh;
+    display: flex;
+    flex-direction: row; 
+}
+
+/* dark mode */
+ body.darkmode {
+    background-color: #000000e7;
+    color: #ffffff;
+}
+body.darkmode input{
+    background-color: rgba(248, 248, 253, 0.098);
+    color: white;
+}
+body.darkmode .API-Reference{
+background-color: transparent;
+border-top: 0.01px solid wheat;
+border-bottom: 0.01px solid wheat;
+border-left: 0.01px solid wheat;
+border-right: 0.01px solid wheat;
+}
+body.darkmode .API{
+    color: white;
+}
+body.darkmode .learn-react{
+    background-color: rgba(40, 40, 213, 0.559);
+}
+body.darkmode .modal-content{
+    background-color: #000000b1;
+    color: white;
+}
+body.darkmode .modal{
+    background-color: rgba(0, 0, 255, 0.09);
+}
+/* navbar  when clicked on menu */
+.navmenu{
+    height: 12vh;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.739) inset;
+}
+.web{
+    /* background-color: red; */
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+}
+.React-Logo{
+/* background-color: red; */
+flex: 0.55;
+display: flex;
+justify-content: end;
+flex-direction: column;
+align-items: center;
+row-gap: 30px;
+}
+.reactP{
+    font-size: 34px;
+    font-weight: bold;
+}
+.libray{
+         flex: 0.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.libray p{
+    font-size: 19px;
+    font-weight: 400;
+}
+.newPage{
+    /* background-color: yellow; */
+    flex: 0.35;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+button{
+    margin-top: 1vh;
+    height: 7vh;
+    width: 21vh;
+    padding: 0.5vh;
+    border-radius: 3.5vh;
+    outline: none;
+    border:  none;
+   box-shadow: 1px 1px rgba(0, 0, 0, 0.435) inset;
+}
+.learn-react{
+    background-color: rgba(0, 0, 255, 0.824);
+}
+.learn-react p{
+    color: rgba(255, 255, 255, 0.79);
+    font-size: 3vh;
+    font-weight: bold;
+}
+.API-Reference{
+    width: 25vh;
+}
+.API-Reference p{
+    color: #000000da;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+/* responsivestyle */
+@media screen and (max-width: 900px) {
+    .letter-link{
+        display: none;
+    }
+    .menu{
+        display: flex;
+    }
+
+    .icon-link{
+        flex: 1;
+        column-gap: 5vh;
+    }
+    .search-bar{
+        flex: 0.75;
+    }
+    .links{
+        flex: 0.25;
+    }
+   
+}
+@media screen  and (max-width : 700px){
+    .search{
+        display: none;
+    } 
+    .search-img{
+        flex: 1;
+        display: flex;
+      justify-content: end;
+      align-items: center;
+    }
+    .search-img img{
+        display: none;
+    }
+     .searclink-img{
+        display: flex;
+    }
+     .searclink-img img{
+        height: 5vh;
+        width: 5vh;
+    }
+}
