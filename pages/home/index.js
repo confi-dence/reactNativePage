@@ -1,136 +1,145 @@
-const modal = document.getElementById('myModal'),
- openmodal = document.querySelectorAll('[id^="open-modal-"]'); 
-closedmodal = document.getElementById('close-modal'),
- ModeToggle = document.getElementById('modeToggle'),
- githuB = document.getElementById('github'),
-openmenu = document.getElementById('open-menu'),
-newid = document.getElementById('newid'),
+const lightDark = document.getElementById('darkLight'),
+    github = document.getElementById('github'),
+    popup = document.getElementById('popup'),
+    active = document.getElementById('active'),
+    menu = document.getElementById('menu_bar'),
+    closedropDownBar = document.getElementById('closelist'),
+    list = document.getElementById('list'),
+
+    openModal = document.querySelectorAll('[id^="openModal-"]'),
+    modal = document.getElementById('modal'),
+    search = document.getElementById('openModal-2'),
+    search2 = document.getElementById('openModal-3'),
+    menubelow = document.querySelectorAll('#menubelow'),
+    navbar = document.getElementById('navbar')
+
+image1 = '../image/moon.png',
+    image2 = '../image/sun.png',
+    image3 = '../image/githubw.png',
+    image4 = '../image/github.png',
+    image5 = '../image/menu.png',
+    image6 = '../image/menuB.png',
+    image7 = '../image/cross.png',
+    image8 = '../image/search.png',
+    image9 = '../image/searchleft.png',
+    image10 = '../image/searchB.png'
 
 
-menu = document.getElementById('menu'),
-closemenu = document.getElementById('closemenu'),
-navbar = document.getElementById('navbar')
-
-
- image1 = '../image/moon.png',
- image2 = '../image/sun.png', 
- image3 = '../image/github.png',
- image4 = '../image/githubw.png'; 
- image5 = '../image/menu.png',
- image6 = '../image/menuB.png'; 
- image7 = '../image/cross.png'
-
-openmenu.id = 'newid'
-function toggleMode() {
+function lightDarkToggle() {
     document.body.classList.toggle('darkmode')
     if (document.body.classList.contains('darkmode')) {
-        localStorage.setItem('mode+', 'dark')
-        ModeToggle.src = image2
-        githuB.src= image3
-    }else{
+        localStorage.setItem('mode', 'dark')
+        lightDark.src = image2
+        github.src = image4
+        search.src = image10
+        search2.src = image10
+        popup.classList.add('show', 'rotated')
+        setTimeout(() => {
+            popup.classList.remove('rotated')
+        }, 1000)
+        setTimeout(() => {
+            popup.classList.remove('show',)
+        }, 11000)
+    } else {
         localStorage.setItem('mode', 'light')
-        ModeToggle.src = image1
-        githuB.src = image4
-        // openmenu.src = image5
-        openmenu.src = image5
+        lightDark.src = image1
+        github.src = image3
+        search.src =image8
+        search2.src =image9
+        popup.classList.add('show')
+        // popup.textContent = 'Lightmode activated'
+        setTimeout(() => {
+            popup.classList.remove('show')
+        }, 60)
+    }
+
+}
+
+
+
+lightDark.addEventListener('click', lightDarkToggle)
+
+const savemode = localStorage.getItem('mode')
+
+if (savemode === 'dark') {
+    document.body.classList.add('darkmode')
+    lightDark.src = image2
+
+    closedropDownBar.style.display = 'none'
+} else {
+    document.body.classList.remove('darkmode')
+    lightDark.src = image1
+
+    closedropDownBar.style.display = 'none'
+}
+// if (window.innerWidth <= 960) {
+//     document.querySelectorAll('.closemenu').forEach(el => el.style.display = 'none')
+    // document.querySelectorAll('closemenu').forEach(el => el.style.display)
+// } else {
+//     document.querySelectorAll('.closemenu').forEach(el => el.style.display = 'flex')
+// }
+
+function handleResize() {
+    const isSmallScreen = window.innerWidth <= 960;
+    document.querySelectorAll('.menuB').forEach(el => el.style.display = 'none')
+
+
+    document.querySelectorAll('.closemenu').forEach(el => {
+        if (isSmallScreen) {
+            el.style.display = 'none'
+        } else {
+            el.style.display = 'flex'
+        }
+    });
+
+
+    if (isSmallScreen) {
+        menu.addEventListener('click', toggle);
+    } else {
+        menu.removeEventListener('click', toggle);
     }
 }
 
-const savemode = localStorage.getItem('mode')
-if(savemode === 'dark'){
-    document.body.classList.add('darkmode')
-    ModeToggle.src = image2
-    githuB.src= image3
-    openmenu.src = image6
-}else{
-    document.body.classList.remove('darkmode')
-    ModeToggle.src = image1
-    githuB.src = image4
-    openmenu.src = image5
-}
+window.addEventListener('resize', handleResize);
+handleResize(); 
 
-ModeToggle.addEventListener('click', toggleMode)
-openmodal.forEach(imgbutton => {
-    imgbutton.addEventListener('click', function () {
-        modal.style.display = 'block' 
+
+function toggle() {
+    if (window.innerWidth > 960) return
+    const image = menu.src,
+        children = document.querySelectorAll('#hell .closemenu, #list .closemenu')
+    if (image.includes('menu.png')) {
+        menu.src = image7
+        navbar.classList.add('navmenu')
+        children.forEach(child => {
+            child.style.display = 'flex';
+            menubelow.forEach(child =>[
+                child.style.display = 'flex'
+            ])
+        })
+    } else {
+        menu.src = image5
+        navbar.classList.remove('navmenu')
+
+        children.forEach(child => {
+            child.style.display = 'none'
+        })
+        menubelow.forEach(child =>[
+            child.style.display = 'none'
+        ])
+
+    }
+}
+menu.addEventListener('click', toggle)
+
+// modal
+openModal.forEach(search => {
+    search.addEventListener('click', function () {
+        modal.style.display = 'block'
     })
-})
-closedmodal.addEventListener('click', function () {
-    modal.style.display = 'none'
 })
 window.addEventListener('click', function (event) {
     if (event.target === modal) {
-        modal.style.display = 'none';
+        modal.style.display = 'none'
     }
 })
-
-openmenu.addEventListener('click', function () {
-    menu.style.display= 'block'
-
-    localStorage.setItem('menuset', 'menu')
-})
-closemenu.addEventListener('click', function () {
-    menu.style.display = 'none'
-    localStorage.setItem('menuset', 'cross')
-
-
-})
-window.addEventListener('click', function (events) {
-    if (events.target === menu) {
-        menu.style.display = 'none'
-        localStorage.setItem('menuset', 'cross')
-
-    }
-})
-
-
-function  imagetoggle(){
-    const currentSrc = openmenu.src;
-   
-    if(currentSrc.includes('menu.png')){
-        localStorage.setItem('menuset', 'menu')
-        openmenu.src = image7
-        menu.appendChild(closemenu)
-        navbar.classList.add('navmenu')
-    }else {
-        localStorage.setItem('menuset', 'cross')
-        openmenu.src = image5
-        navbar.classList.remove('navmenu')
-        menu.removeChild(closemenu)
-    }
-}
-openmenu.addEventListener('click', imagetoggle )
- 
-
-
-// function toggleMode() {
-//     document.body.classList.toggle('darkmode')
-//     if (document.body.classList.contains('darkmode')) {
-//         localStorage.setItem('mode', 'dark')
-        
-//     }else{
-//         localStorage.setItem('mode', 'light')
-     
-//     }
-// }
-// menu.addEventListener('click', function () {
-//     if (navbar.classList.contains('navmenu')) {
-//         navbar.classList.remove('navmenu')
-//     }else(
-//         navbar.classList.add('navmenu')
-//     )
-// })
-// openmenu.addEventListener('click', function () {
-//     // Get the full path of the current image
-//     const currentSrc = openmenu.src;
-
-//     // Compare the full path with the full path of image5 and image7
-//     if (currentSrc.includes('menu.png')) { // Check if the current image is menu.png
-//         openmenu.src = image7; // Change to cross.png
-//     } else {
-//         openmenu.src = image5; // Change back to menu.png
-//     }
-// });
-
-
- 
