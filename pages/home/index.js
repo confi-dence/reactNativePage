@@ -11,7 +11,8 @@ const lightDark = document.getElementById('darkLight'),
     search = document.getElementById('openModal-2'),
     search2 = document.getElementById('openModal-3'),
     menubelow = document.querySelectorAll('#menubelow'),
-    navbar = document.getElementById('navbar')
+    navbar = document.getElementById('navbar'),
+    theMain = document.getElementById('the-main')
 
 image1 = '../image/moon.png',
     image2 = '../image/sun.png',
@@ -111,6 +112,7 @@ function toggle() {
     if (image.includes('menu.png')) {
         menu.src = image7
         navbar.classList.add('navmenu')
+        theMain.style.display = "none"
         children.forEach(child => {
             child.style.display = 'flex';
             menubelow.forEach(child =>[
@@ -120,6 +122,9 @@ function toggle() {
     } else {
         menu.src = image5
         navbar.classList.remove('navmenu')
+        menu.classList.add('main')
+
+        theMain.style.display = "flex"
 
         children.forEach(child => {
             child.style.display = 'none'
